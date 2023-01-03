@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/styles/css/main.css}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculate</title>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}">
+
+</header>
+
+<h1> CALCULATOR PAGE </h1>
+
+<form action="/calculator/calculate" method="post" th:object="${plantType}">
+    <label for="plantType">Select plant type:</label>
+
+    <select  th:name="plantType" id="plantType">
+        <option th:value="'null'">--Please choose an option--</option>
+        <option th:value="treePlants" >Tree plants.</option>
+        <option th:value="HerbaceousPlants">Herbaceous plants</option>
+        <option th:value="orchids">Orchids</option>
+        <option th:value="cactiAndSucculents">Cacti and succulents</option>
+        <option th:value="bromeliads">Bromeliads</option>
+    </select>
+    <button type="submit" class="btn w3-btn btn-default"><h6>send request</h6></button>
+</form>
+
+<div th:if="${plantType} != 'null'">
+    <div th:if="${plantType} == 'treePlants'">
+        At natural temperatures (18–22 °C indoors), plants, hard trunks, and species with dense leaves are watered on average 5–7 days during the growth period and 10–12 days during the vegetative growth period (winter). Water should fall on the surface of the earthen coma.
+    </div>
+
+    <div th:if="${plantType} == 'HerbaceousPlants'">
+        Stemless plants, plants that form rosettes or a bush of flexible and thin stems, as well as all plants that resemble grass in their appearance, are watered on average 2 times a week during the growth period and 1 time per week in winter. It is best to use the method of immersing the pot in water.
+    </div>
+
+    <div th:if="${plantType} == 'orchids'">
+        Forms with pseudobulbs or stems resembling reeds are watered on average once a week throughout the year and only during the flowering period - every 3-4 days. Orchids with thin stems or species that form rosettes are watered 2 times a week during the growth period and 1 time per week in winter. Use non-calcareous water, do not wet the core of the plant, and pour excess water from the pan.
+    </div>
+
+    <div th:if="${plantType} == 'cactiAndSucculents'">
+        During the growth period, water every 6-10 days depending on the air temperature and no more than 1 time in 15-20 days in winter. If the temperature is low, do not water at all. For example, lithops can survive in a pot for about a year without a single drop of water if the room temperature is below 16°C.
+    </div>
+
+    <div th:if="${plantType} == 'bromeliads'">
+        Water pineapple, echmea, gusmania, etc. with lime water on average once a week throughout the year. During the growth period, leave water in the center of the leafy rosette.
+    </div>
+</div>
+<!--<nav class="crumbs">-->
+<!--    <ol>-->
+<!--        <li class="crumb"><a th:href="@{/}"> Home </a></li>-->
+<!--        <li class="crumb">Calculator</li>-->
+<!--    </ol>-->
+<!--</nav>-->
+</body>
+</html>
