@@ -1,1 +1,0 @@
-web: java -jar build/libs/hello-world-lab2-0.0.1.jar
